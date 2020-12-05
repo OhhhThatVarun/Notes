@@ -1,5 +1,6 @@
 package com.varun.notes.data.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.varun.notes.data.entities.NoteEntity
 
@@ -16,7 +17,7 @@ interface NotesDao {
     suspend fun deleteNote(id: String)
 
     @Query("SELECT * FROM NoteEntity ORDER BY CREATED_AT ASC")
-    suspend fun getNotes(): List<NoteEntity>
+    fun getNotes(): LiveData<List<NoteEntity>>
 
     @Query("SELECT * FROM NoteEntity WHERE id = :id LIMIT 1")
     suspend fun getNoteById(id: String): NoteEntity

@@ -2,14 +2,26 @@
     <string name="app_name">Notes</string>
 
     <!--Errors-->
-    <string name="error_creating">There is a error while creating the note</string>
-    <string name="error_updating">There is a error while updating the note</string>
-    <string name="error_fetching_note">There is a error while feting the note</string>
+    <string name="error_creating">There is an error while creating the note</string>
+    <string name="error_updating">There is an error while updating the note</string>
+    <string name="error_deleting">There is an error while deleting the note</string>
+    <string name="error_fetching_note">There is an error while feting the note</string>
 
+    <!--Success-->
     <string name="success_creating">Note has been successfully created</string>
     <string name="success_updated">Note has been successfully updated</string>
+    <string name="success_deleted">Note has been successfully deleted!</string>
+
+    <!--CreateOrEditNoteFragment-->
     <string name="hint_title">Title</string>
     <string name="hint_description">Description</string>
     <string name="hint_image_url">Image Url</string>
+
+    <!--NotesFragment-->
+    <string name="delete">Delete</string>
+    <string name="delete_this_note">Do you really want to delete this note?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="new_note">New note</string>
+
 </resources>

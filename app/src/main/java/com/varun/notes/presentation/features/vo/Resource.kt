@@ -1,4 +1,4 @@
-package com.varun.notes.presentation
+package com.varun.notes.presentation.features.vo
 
 enum class Status {
     SUCCESS,

@@ -1,5 +1,7 @@
 package com.varun.notes.data.repositories
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.varun.notes.data.db.dao.NotesDao
 import com.varun.notes.data.entities.transform
 import com.varun.notes.domain.models.Note
@@ -20,8 +22,10 @@ class NotesRepositoryImpl(private val notesDao: NotesDao) : NotesRepository {
         return notesDao.deleteNote(id)
     }
 
-    override suspend fun getNotes(): List<Note> {
-        return notesDao.getNotes().map { it.transform() }
+    override fun getNotes(): LiveData<List<Note>> {
+        return Transformations.map(notesDao.getNotes()) { notes ->
+            notes.map { it.transform() }
+        }
     }
 
     override suspend fun getNote(id: String): Note {

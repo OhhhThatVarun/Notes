@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.varun.notes.R
 import com.varun.notes.databinding.FragmentCreateOrEditNotesBinding
-import com.varun.notes.presentation.Status
 import com.varun.notes.presentation.extentions.createLongToast
 import com.varun.notes.presentation.extentions.getDataBinding
+import com.varun.notes.presentation.features.vo.Status
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class CreateOrEditNoteFragment : Fragment() {
