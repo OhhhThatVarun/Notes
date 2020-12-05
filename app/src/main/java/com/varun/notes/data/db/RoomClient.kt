@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.varun.notes.data.db.dao.NotesDao
 import com.varun.notes.data.entities.NoteEntity
 
-@Database(entities = [NoteEntity::class], version = 1)
+@Database(entities = [NoteEntity::class], version = 1, exportSchema = false)
 abstract class RoomClient : RoomDatabase() {
 
     abstract fun notesDao(): NotesDao

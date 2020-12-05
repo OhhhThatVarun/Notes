@@ -4,15 +4,16 @@ import com.varun.notes.data.db.dao.NotesDao
 import com.varun.notes.data.entities.transform
 import com.varun.notes.domain.models.Note
 import com.varun.notes.domain.repositories.NotesRepository
+import java.util.*
 
 class NotesRepositoryImpl(private val notesDao: NotesDao) : NotesRepository {
 
     override suspend fun addNote(note: Note) {
-        return notesDao.insert(note.transform())
+        return notesDao.insert(note.copy(id = UUID.randomUUID().toString(), createdAt = System.currentTimeMillis()).transform())
     }
 
-    override suspend fun editNote(note: Note) {
-        return notesDao.updateNote(note.transform())
+    override suspend fun updateNote(note: Note) {
+        return notesDao.updateNote(note.copy(isEdited = true).transform())
     }
 
     override suspend fun deleteNote(id: String) {
@@ -23,7 +24,7 @@ class NotesRepositoryImpl(private val notesDao: NotesDao) : NotesRepository {
         return notesDao.getNotes().map { it.transform() }
     }
 
-    override suspend fun getNotes(id: String): Note {
+    override suspend fun getNote(id: String): Note {
         return notesDao.getNoteById(id).transform()
     }
 }

@@ -7,7 +7,7 @@ import com.varun.notes.domain.models.Note
 
 @Entity
 data class NoteEntity(
-        @PrimaryKey(autoGenerate = true)
+        @PrimaryKey(autoGenerate = false)
         val id: String,
         @ColumnInfo(name = "TITLE")
         val title: String?,
@@ -16,7 +16,7 @@ data class NoteEntity(
         @ColumnInfo(name = "IMAGE_URL")
         val imageUrl: String?,
         @ColumnInfo(name = "CREATED_AT")
-        val createdAt: Long,
+        val createdAt: Long?,
         @ColumnInfo(name = "IS_EDITED")
         val isEdited: Boolean = false,
 ) {

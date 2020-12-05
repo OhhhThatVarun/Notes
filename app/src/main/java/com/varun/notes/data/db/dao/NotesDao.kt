@@ -12,7 +12,7 @@ interface NotesDao {
     @Update(onConflict = OnConflictStrategy.IGNORE)
     suspend fun updateNote(note: NoteEntity)
 
-    @Query("DELETE FROM NoteEntity WHERE id = :id LIMIT 1")
+    @Query("DELETE FROM NoteEntity WHERE id = :id")
     suspend fun deleteNote(id: String)
 
     @Query("SELECT * FROM NoteEntity ORDER BY CREATED_AT ASC")

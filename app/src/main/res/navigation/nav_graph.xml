@@ -17,7 +17,13 @@
 
     <fragment
         android:id="@+id/createEditNotesFragment"
-        android:name="com.varun.notes.presentation.features.createeditnotes.CreateEditNotesFragment"
+        android:name="com.varun.notes.presentation.features.createoreditnote.CreateOrEditNoteFragment"
         android:label="fragment_create_edit_notes"
-        tools:layout="@layout/fragment_create_edit_notes" />
+        tools:layout="@layout/fragment_create_or_edit_notes">
+        <argument
+            android:name="id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

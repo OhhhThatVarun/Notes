@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Notes</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Errors-->
+    <string name="error_creating">There is a error while creating the note</string>
+    <string name="error_updating">There is a error while updating the note</string>
+    <string name="error_fetching_note">There is a error while feting the note</string>
+
+    <string name="success_creating">Note has been successfully created</string>
+    <string name="success_updated">Note has been successfully updated</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_description">Description</string>
+    <string name="hint_image_url">Image Url</string>
+    <string name="new_note">New note</string>
 </resources>
