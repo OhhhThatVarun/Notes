@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.varun.notes.domain.models.Note
 import com.varun.notes.domain.repositories.NotesRepository
-import com.varun.notes.presentation.features.vo.Resource
+import com.varun.notes.presentation.vo.Resource
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

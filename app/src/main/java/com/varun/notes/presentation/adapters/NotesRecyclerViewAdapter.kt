@@ -1,4 +1,4 @@
-package com.varun.notes.presentation.features.adapters
+package com.varun.notes.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

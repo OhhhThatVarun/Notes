@@ -7,7 +7,7 @@
 
         <variable
             name="adapter"
-            type="com.varun.notes.presentation.features.adapters.NotesRecyclerViewAdapter" />
+            type="com.varun.notes.presentation.adapters.NotesRecyclerViewAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

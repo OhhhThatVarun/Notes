@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.varun.notes.R
 import com.varun.notes.databinding.FragmentNotesBinding
+import com.varun.notes.presentation.adapters.NotesRecyclerViewAdapter
 import com.varun.notes.presentation.extentions.createLongToast
 import com.varun.notes.presentation.extentions.getDataBinding
 import com.varun.notes.presentation.extentions.navigate
 import com.varun.notes.presentation.extentions.showAlert
-import com.varun.notes.presentation.features.adapters.NotesRecyclerViewAdapter
-import com.varun.notes.presentation.features.vo.Status
+import com.varun.notes.presentation.vo.Status
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 

@@ -1,4 +1,4 @@
-package com.varun.notes.presentation.features.vo
+package com.varun.notes.presentation.vo
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
