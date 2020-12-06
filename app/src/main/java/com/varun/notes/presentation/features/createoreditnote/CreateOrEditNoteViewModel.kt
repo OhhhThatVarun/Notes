@@ -17,11 +17,11 @@ class CreateOrEditNoteViewModel(private val notesRepository: NotesRepository) : 
     val description = MutableLiveData<String>()
     val imageUrl = MutableLiveData<String>()
 
-    val note: LiveData<Resource<Note>> get() = _note
-    private val _note = MutableLiveData<Resource<Note>>()
+    val note: LiveData<Resource<Note?>> get() = _note
+    private val _note = MutableLiveData<Resource<Note?>>()
 
-    val createNote: LiveData<Resource<Unit>> get() = _createNote
-    private val _createNote = MutableLiveData<Resource<Unit>>()
+    val createNote: LiveData<Resource<String>> get() = _createNote
+    private val _createNote = MutableLiveData<Resource<String>>()
 
     val updateNote: LiveData<Resource<Unit>> get() = _updateNote
     private val _updateNote = MutableLiveData<Resource<Unit>>()
@@ -30,9 +30,9 @@ class CreateOrEditNoteViewModel(private val notesRepository: NotesRepository) : 
         viewModelScope.launch {
             try {
                 val note = notesRepository.getNote(id)
-                title.value = note.title
-                description.value = note.description
-                imageUrl.value = note.imageUrl
+                title.value = note?.title
+                description.value = note?.description
+                imageUrl.value = note?.imageUrl
                 _note.postValue(Resource.success(note))
             } catch (e: Exception) {
                 Timber.e(e)

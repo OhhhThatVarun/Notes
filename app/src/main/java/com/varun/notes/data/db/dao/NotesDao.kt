@@ -20,5 +20,5 @@ interface NotesDao {
     fun getNotes(): LiveData<List<NoteEntity>>
 
     @Query("SELECT * FROM NoteEntity WHERE id = :id LIMIT 1")
-    suspend fun getNoteById(id: String): NoteEntity
+    suspend fun getNoteById(id: String): NoteEntity?
 }

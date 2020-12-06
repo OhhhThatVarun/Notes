@@ -10,8 +10,10 @@ import java.util.*
 
 class NotesRepositoryImpl(private val notesDao: NotesDao) : NotesRepository {
 
-    override suspend fun addNote(note: Note) {
-        return notesDao.insert(note.copy(id = UUID.randomUUID().toString(), createdAt = System.currentTimeMillis()).transform())
+    override suspend fun addNote(note: Note): String {
+        val newId = UUID.randomUUID().toString()
+        notesDao.insert(note.copy(id = newId, createdAt = System.currentTimeMillis()).transform())
+        return newId
     }
 
     override suspend fun updateNote(note: Note) {
@@ -28,7 +30,7 @@ class NotesRepositoryImpl(private val notesDao: NotesDao) : NotesRepository {
         }
     }
 
-    override suspend fun getNote(id: String): Note {
-        return notesDao.getNoteById(id).transform()
+    override suspend fun getNote(id: String): Note? {
+        return notesDao.getNoteById(id)?.transform()
     }
 }
