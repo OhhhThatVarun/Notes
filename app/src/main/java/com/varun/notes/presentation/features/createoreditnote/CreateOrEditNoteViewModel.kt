@@ -33,6 +33,7 @@ class CreateOrEditNoteViewModel(private val notesRepository: NotesRepository) : 
                 title.value = note.title
                 description.value = note.description
                 imageUrl.value = note.imageUrl
+                _note.postValue(Resource.success(note))
             } catch (e: Exception) {
                 Timber.e(e)
                 _note.postValue(Resource.error(e.message))
@@ -63,6 +64,6 @@ class CreateOrEditNoteViewModel(private val notesRepository: NotesRepository) : 
     }
 
     private fun getNote(): Note {
-        return Note(title = title.value, description = description.value, imageUrl = imageUrl.value)
+        return Note(title = title.value, description = description.value, imageUrl = imageUrl.value, createdAt = _note.value?.data?.createdAt)
     }
 }
