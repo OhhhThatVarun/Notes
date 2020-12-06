@@ -6,6 +6,7 @@
     <string name="error_updating">There is an error while updating the note</string>
     <string name="error_deleting">There is an error while deleting the note</string>
     <string name="error_fetching_note">There is an error while feting the note</string>
+    <string name="error_nothing_to_save">There is no note to save</string>
 
     <!--Success-->
     <string name="success_creating">Note has been successfully created</string>
@@ -16,6 +17,7 @@
     <string name="hint_title">Title</string>
     <string name="hint_description">Description</string>
     <string name="hint_image_url">Image Url</string>
+    <string name="edit_note">Edit Note</string>
 
     <!--NotesFragment-->
     <string name="delete">Delete</string>

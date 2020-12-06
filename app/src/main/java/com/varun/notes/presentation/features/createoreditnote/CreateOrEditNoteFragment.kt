@@ -28,6 +28,10 @@ class CreateOrEditNoteFragment : Fragment() {
     }
 
     private val onSaveClick = View.OnClickListener {
+        if (viewModel.title.value == null && viewModel.description.value == null && viewModel.imageUrl.value == null) {
+            createLongToast(R.string.error_nothing_to_save)
+            return@OnClickListener
+        }
         if (isEditMode()) {
             viewModel.updateNote(args.id!!)
         } else {
@@ -68,7 +72,10 @@ class CreateOrEditNoteFragment : Fragment() {
             }
         })
         if (isEditMode()) {
+            binding.setHeading(R.string.edit_note)
             viewModel.fillNoteData(args.id!!)
+        } else {
+            binding.setHeading(R.string.new_note)
         }
     }
 
