@@ -28,6 +28,7 @@ class NotesRepositoryTest : KoinTest {
         val insertedNote = insertTestNote(notesRepository)
         val savedNote = notesRepository.getNote(insertedNote.id)
         assert(savedNote?.id == insertedNote.id)
+        assert(savedNote?.createdAt != null)
     }
 
     @Test
