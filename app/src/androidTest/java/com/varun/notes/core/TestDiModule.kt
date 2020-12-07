@@ -16,7 +16,7 @@ import org.koin.dsl.module
 import kotlin.coroutines.CoroutineContext
 
 @ExperimentalCoroutinesApi
-val testDoMoule = module {
+val testDiModule = module {
 
     single<CoroutineDispatcher> {
         TestCoroutineDispatcher()

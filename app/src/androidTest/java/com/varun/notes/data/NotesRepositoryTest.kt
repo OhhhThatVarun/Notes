@@ -2,8 +2,8 @@ package com.varun.notes.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.varun.notes.domain.models.Note
 import com.varun.notes.domain.repositories.NotesRepository
+import com.varun.notes.utils.insertTestNote
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.runBlockingTest
@@ -25,14 +25,14 @@ class NotesRepositoryTest : KoinTest {
 
     @Test
     fun insertNoteSavesData() = testScope.runBlockingTest {
-        val insertedNote = insertTestNote()
+        val insertedNote = insertTestNote(notesRepository)
         val savedNote = notesRepository.getNote(insertedNote.id)
         assert(savedNote?.id == insertedNote.id)
     }
 
     @Test
     fun editingNoteEditsDataAndMarksItEdited() = testScope.runBlockingTest {
-        val insertedNote = insertTestNote()
+        val insertedNote = insertTestNote(notesRepository)
 
         val editedTitle = "Edited title"
         notesRepository.updateNote(insertedNote.copy(title = editedTitle))
@@ -44,15 +44,10 @@ class NotesRepositoryTest : KoinTest {
 
     @Test
     fun deleteNoteDeletesData() = testScope.runBlockingTest {
-        val insertedNote = insertTestNote()
+        val insertedNote = insertTestNote(notesRepository)
         notesRepository.deleteNote(insertedNote.id)
         val deletedNote = notesRepository.getNote(insertedNote.id)
         assert(deletedNote == null)
 
-    }
-
-    private suspend fun insertTestNote(): Note {
-        val newNote = Note(title = "Test title", description = "Test description", imageUrl = "Test imageUrl")
-        return newNote.copy(id = notesRepository.addNote(newNote))
     }
 }

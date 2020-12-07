@@ -6,6 +6,7 @@ import com.varun.notes.domain.models.Note
 import com.varun.notes.domain.repositories.NotesRepository
 import com.varun.notes.presentation.features.createoreditnote.CreateOrEditNoteViewModel
 import com.varun.notes.presentation.vo.Status
+import com.varun.notes.utils.insertTestNote
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.runBlockingTest
@@ -35,7 +36,7 @@ class CreateOrEditNoteViewModelTest : KoinTest {
     @Test
     fun fillNoteDataUpdatesTwoWayBingingVariables() {
         testScope.runBlockingTest {
-            val note = insertTestNote()
+            val note = insertTestNote(notesRepository)
             createOrEditNoteViewModel.fillNoteData(note.id)
             createOrEditNoteViewModel.title.observeForever {
                 assert(it == note.title)
@@ -69,7 +70,7 @@ class CreateOrEditNoteViewModelTest : KoinTest {
     @Test
     fun updateNoteUpdatesLiveData() {
         testScope.runBlockingTest {
-            val note = insertTestNote()
+            val note = insertTestNote(notesRepository)
             createOrEditNoteViewModel.fillNoteData(note.id)
             createOrEditNoteViewModel.title.postValue("Updated title")
 
@@ -78,10 +79,5 @@ class CreateOrEditNoteViewModelTest : KoinTest {
                 assert(resource.status == Status.SUCCESS)
             }
         }
-    }
-
-    private suspend fun insertTestNote(): Note {
-        val newNote = Note(title = "Test title", description = "Test description", imageUrl = "Test imageUrl")
-        return newNote.copy(id = notesRepository.addNote(newNote))
     }
 }
